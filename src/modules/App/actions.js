@@ -50,3 +50,10 @@ export const SetSong = song => {
     dispatch({ type: actions.SYNTH_PLAY });
   };
 };
+
+export const ChangeVisual = () => {
+  console.log("ChangeVisual");
+  return dispatch => {
+    dispatch({ type: actions.CHANGE_VISUAL, payload: {} });
+  };
+};

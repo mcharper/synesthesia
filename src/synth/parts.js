@@ -14,6 +14,22 @@ export const addChordProgression = (startTime, chordProgression, instrument, not
   loop.start(startTime);
 };
 
+export const addObservableChordProgression = (startTime, chordProgression, instrument, noteLength, interval, shouldLoop, changeHandler) => {
+  const loop = new Tone.Loop(function(time) {
+    //Take first chord
+    const currentChord = chordProgression.shift();
+    //add chord to back of queue
+    chordProgression.push(currentChord);
+    //play it
+    instrument.triggerAttackRelease(currentChord, noteLength, time);
+    // Notify observer the chord changed
+    changeHandler();
+  }, interval);
+
+  loop.loop = shouldLoop;
+  loop.start(startTime);
+};
+
 export const addDrums = (startTime, note, instrument, pattern, probability, shouldLoop, mutationFunction) => {
   const sequencer = new Tone.Sequence(
     function(time, hit) {

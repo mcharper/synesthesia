@@ -2,7 +2,7 @@ import debounce from "lodash/debounce";
 import Tone from "tone";
 import songs from "./songs";
 
-export const play = (song, seed, callback = null) => {
+export const play = (song, seed, callback = null, changeHandler) => {
   Tone.context.close();
   Tone.context = new AudioContext();
 
@@ -10,7 +10,7 @@ export const play = (song, seed, callback = null) => {
 
   let generatedSettings = null;
   if (song === 1) {
-    generatedSettings = songs.funkyDownTempo.play();
+    generatedSettings = songs.funkyDownTempo.play(changeHandler);
   } else {
     generatedSettings = songs.drone.play();
   }

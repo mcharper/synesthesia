@@ -6,6 +6,7 @@ import NowPlayingSection from "./NowPlayingSection";
 import GenerationOptions from "./GenerationOptions";
 import Songs from "./Songs";
 import Info from "./Info";
+import Visualiser from "./Visualiser";
 
 class App extends Component {
   componentWillMount() {
@@ -48,6 +49,12 @@ class App extends Component {
           </div>
         </div>
 
+        <div className="row ">
+          <div className="col-md-8 offset-md-2 border border-white rounded">
+            <Visualiser changeNumber={this.props.changeNumber} />
+          </div>
+        </div>
+
         <div className="row">
           <div className={`col-md-8 offset-md-2 border border-white rounded song-section ${this.props.activeSongClassName}`}>
             <NowPlayingSection isPlaying={this.props.isPlaying} generatedSettings={this.props.generatedSettings} />
@@ -84,6 +91,7 @@ App.propTypes = {
   playButtonText: PropTypes.string.isRequired,
   match: PropTypes.object,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  changeNumber: PropTypes.number
 };
 export default App;

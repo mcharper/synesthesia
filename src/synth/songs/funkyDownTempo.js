@@ -8,7 +8,7 @@ import * as utils from "../../utils";
 const reverb = new Tone.Freeverb().toMaster();
 reverb.receive("reverb");
 
-export const play = () => {
+export const play = (changeHandler) => {
   const keyType = scales.getRandomScaleType();
   const songKey = {
     root: scales.getRandomRootNote(),
@@ -90,7 +90,12 @@ export const play = () => {
     changeRythym(sequencer, rythyms.randomOpenHatRythym());
   });
 
-  parts.addChordProgression("0:0:0", chordProgression, chordInstrument, `${chordProgressionBars}m`, `${chordProgressionBars}m`, true);
+  if(changeHandler) {
+    parts.addObservableChordProgression("0:0:0", chordProgression, chordInstrument, `${chordProgressionBars}m`, `${chordProgressionBars}m`, true, changeHandler);
+  }
+  else {
+    parts.addChordProgression("0:0:0", chordProgression, chordInstrument, `${chordProgressionBars}m`, `${chordProgressionBars}m`, true);
+  }
 
   const notesPerChord = [];
   for (const bassLinePattern of bassLinePatterns) {
@@ -127,4 +132,4 @@ export const play = () => {
   // evolutionLoop.start(0);
 
   return generatedSettings;
-};
+}

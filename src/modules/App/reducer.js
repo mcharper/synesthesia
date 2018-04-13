@@ -7,18 +7,21 @@ const initialState = {
   playButtonText: "Play",
   generatedSettings: null,
   isPlaying: false,
-  activeSongClassName: "funky-down-tempo--active"
+  activeSongClassName: "funky-down-tempo--active",
+  changeNumber: 0,
+  currentVisualiser: () => { console.log("Change visual"); }
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.SYNTH_PLAY: {
-      const generatedSettings = synth.play(state.song, state.seed);
+      const generatedSettings = synth.play(state.song, state.seed, null, state.currentVisualiser );
       state = {
         ...state,
         generatedSettings: generatedSettings,
         playButtonText: "Stop",
-        isPlaying: true
+        isPlaying: true,
+        changeNumber: 0
       };
       break;
     }
@@ -47,6 +50,15 @@ export default (state = initialState, action) => {
         ...state,
         song: newSong,
         activeSongClassName: newSong === 1 ? "funky-down-tempo--active" : "evolving-drone--active"
+      };
+      break;
+    }
+
+    case actions.CHANGE_VISUAL: {
+      const newChangeNumber = state.changeNumber + 1;
+      state = {
+        ...state,
+        changeNumber: newChangeNumber
       };
       break;
     }
