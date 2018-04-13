@@ -5,12 +5,12 @@ import CrossfadeImage from "react-crossfade-image";
 const Visualiser = ({ changeNumber }) => {
   if(changeNumber % 2 === 0) {
     return (
-        <CrossfadeImage className="visual" duration="1000" src={"https://picsum.photos/800/300?image=" + changeNumber} />
+        <CrossfadeImage className="visual" duration="2000" src={"https://picsum.photos/800/300?image=" + changeNumber} />
     );
   }
   else {
     return (
-      <CrossfadeImage className="visual" duration="1000" src={"https://picsum.photos/800/300?image=" + changeNumber} />
+      <CrossfadeImage className="visual" duration="2000" src={"https://picsum.photos/800/300?image=" + changeNumber} />
     );
   }
 };

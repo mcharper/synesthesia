@@ -8,7 +8,7 @@ const initialState = {
   generatedSettings: null,
   isPlaying: false,
   activeSongClassName: "funky-down-tempo--active",
-  changeNumber: 0
+  changeNumber: Math.floor(Math.random() * 1000)
 };
 
 export default (state = initialState, action) => {
@@ -56,7 +56,7 @@ export default (state = initialState, action) => {
       const newChangeNumber = state.changeNumber + 1;
       state = {
         ...state,
-        changeNumber: newChangeNumber
+        changeNumber: newChangeNumber % 1000
       };
       break;
     }

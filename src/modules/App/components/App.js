@@ -49,7 +49,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="row ">
+        <div className="row" style={{marginTop: 20}}>
           <div className="offset-md-2 border border-white rounded">
             <Visualiser changeNumber={this.props.changeNumber} />
           </div>
