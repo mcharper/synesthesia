@@ -1,6 +1,6 @@
 {
   "name": "synaesthesia",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "homepage": "https://mcharper.github.io/synaesthesia",
   "dependencies": {
@@ -32,4 +32,3 @@
     "prettier": "1.11.1"
   }
 }
-
