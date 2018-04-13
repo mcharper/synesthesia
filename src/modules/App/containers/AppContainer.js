@@ -4,7 +4,7 @@ import * as actions from "../actions";
 import components from "../components";
 
 const mapStateToProps = state => {
-  const { seed, playButtonText, generatedSettings, isPlaying, song, activeSongClassName, changeNumber, currentVisualiser } = state.app;
+  const { seed, playButtonText, generatedSettings, isPlaying, song, activeSongClassName, changeNumber } = state.app;
   return {
     seed: seed,
     playButtonText: playButtonText,

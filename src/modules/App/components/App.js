@@ -50,7 +50,7 @@ class App extends Component {
         </div>
 
         <div className="row ">
-          <div className="col-md-8 offset-md-2 border border-white rounded">
+          <div className="offset-md-2 border border-white rounded">
             <Visualiser changeNumber={this.props.changeNumber} />
           </div>
         </div>

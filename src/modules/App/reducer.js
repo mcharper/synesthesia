@@ -8,20 +8,18 @@ const initialState = {
   generatedSettings: null,
   isPlaying: false,
   activeSongClassName: "funky-down-tempo--active",
-  changeNumber: 0,
-  currentVisualiser: () => { console.log("Change visual"); }
+  changeNumber: 0
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.SYNTH_PLAY: {
-      const generatedSettings = synth.play(state.song, state.seed, null, state.currentVisualiser );
+      console.log(JSON.stringify(action.generatedSettings));
       state = {
         ...state,
-        generatedSettings: generatedSettings,
+        generatedSettings: action.generatedSettings,
         playButtonText: "Stop",
-        isPlaying: true,
-        changeNumber: 0
+        isPlaying: true
       };
       break;
     }

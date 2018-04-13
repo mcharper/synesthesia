@@ -2,12 +2,16 @@ import * as actions from "./actionTypes";
 import * as synth from "../../synth/synth";
 
 export const Play = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const generatedSettings = synth.play(getState().song, getState().seed, null, () => {
+      dispatch(ChangeVisual());
+    });
     dispatch({
-      type: actions.SYNTH_PLAY
+      type: actions.SYNTH_PLAY,
+      payload: generatedSettings
     });
   };
-};
+}
 
 export const Stop = () => {
   return dispatch => {
@@ -45,10 +49,18 @@ export const RandomiseSeed = () => {
 };
 
 export const SetSong = song => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    var generatedSettings;
     dispatch({ type: actions.SET_SONG, payload: song });
-    dispatch({ type: actions.SYNTH_PLAY });
-  };
+    generatedSettings = synth.play(1, getState().seed, null, () => {
+      dispatch(ChangeVisual());
+    });
+    console.log("Gen:" + JSON.stringify(generatedSettings));
+    dispatch({
+      type: actions.SYNTH_PLAY,
+      generatedSettings: generatedSettings
+    });
+  };  
 };
 
 export const ChangeVisual = () => {
